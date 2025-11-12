@@ -31,8 +31,8 @@ public class Forestilling {
         return new ArrayList<>(bestillinger);
     }
 
-    public Bestilling createBestilling(LocalDate date) {
-        Bestilling bestilling = new Bestilling(date, this);
+    public Bestilling createBestilling(LocalDate date, Kunde kunde) {
+        Bestilling bestilling = new Bestilling(date, this, kunde);
         bestillinger.add(bestilling);
         return bestilling;
     }

@@ -42,4 +42,14 @@ public class Plads {
             bestillinger.add(bestilling);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Plads{" +
+                "række=" + række +
+                ", nr=" + nr +
+                ", pris=" + pris +
+                ", pladsType=" + pladsType +
+                '}';
+    }
 }

@@ -30,15 +30,15 @@ public class Storage {
         }
     }
 
-    public ArrayList<Forestilling> getForestillinger() {
+    public static ArrayList<Forestilling> getForestillinger() {
         return forestillinger;
     }
 
-    public ArrayList<Kunde> getKunder() {
+    public static ArrayList<Kunde> getKunder() {
         return kunder;
     }
 
-    public ArrayList<Plads> getPladser() {
+    public static ArrayList<Plads> getPladser() {
         return pladser;
     }
 }
