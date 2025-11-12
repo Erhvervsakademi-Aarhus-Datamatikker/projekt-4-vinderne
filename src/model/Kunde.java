@@ -29,4 +29,9 @@ public class Kunde {
             bestillinger.add(bestilling);
         }
     }
+
+    @Override
+    public String toString() {
+        return navn + "(" + mobil + ")";
+    }
 }

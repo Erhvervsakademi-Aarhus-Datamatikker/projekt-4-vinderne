@@ -1,7 +1,6 @@
 package gui;
 
-import model.Forestilling;
-import model.Kunde;
+import controller.Controller;
 import model.Plads;
 import model.PladsType;
 import storage.Storage;
@@ -9,33 +8,33 @@ import storage.Storage;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+
 public class App {
     private static final ArrayList<Plads> pladser = new ArrayList<>();
 
     public static void main(String[] args) {
-        initStorage();
-        System.out.println(Storage.getPladser());
+        //initStorage();
+        Gui.main(args);
 
     }
 
     public static void initStorage() {
-        Forestilling forestillingEvita = new Forestilling("Evita",
+        Controller.createForestilling("Evita",
                 LocalDate.of(2023, 8, 10),
                 LocalDate.of(2023, 8, 20));
-        Forestilling forestillingLykkePer = new Forestilling("Lykke Per",
+        Controller.createForestilling("Lykke Per",
                 LocalDate.of(2023, 9, 1),
                 LocalDate.of(2023, 9, 10));
-        Forestilling forestillingChess = new Forestilling("Chess",
+        Controller.createForestilling("Chess",
                 LocalDate.of(2023, 8, 21),
                 LocalDate.of(2023, 8, 30));
 
-        Kunde kundeAndersHansen = new Kunde("Anders Hansen",
+        Controller.createKunde("Anders Hansen",
                 "11223344");
-        Kunde kundePeterJensen = new Kunde("Peter Jensen",
+        Controller.createKunde("Peter Jensen",
                 "12345678");
-        Kunde kundeNielsMadsen = new Kunde("Niels Madsen",
+        Controller.createKunde("Niels Madsen",
                 "12341234");
-
 
         addPladser(1, 5, 1, 2, 450, PladsType.STANDARD);
         addPladser(1, 5, 3, 18, 500, PladsType.STANDARD);
@@ -52,27 +51,22 @@ public class App {
         addPladser(11, 11, 13, 20, 400, PladsType.STANDARD);
         addPladser(12, 15, 1, 20, 400, PladsType.STANDARD);
 
-        Storage.addForestillinger(forestillingEvita);
-        Storage.addForestillinger(forestillingLykkePer);
-        Storage.addForestillinger(forestillingChess);
-
-        Storage.addKunder(kundeAndersHansen);
-        Storage.addKunder(kundePeterJensen);
-        Storage.addKunder(kundeNielsMadsen);
-
-        for (Plads plads : pladser) {
-            Storage.addPladser(plads);
-        }
-
     }
 
-    public static void addPladser(int fraRække, int tilRække, int fraKolonne, int tilKolonne,
+    public static void addPladser(int fraRække, int tilRække,
+                                  int fraKolonne, int tilKolonne,
                                   int pris, PladsType pladsType) {
         for (int i = fraRække; i <= tilRække; i++) {
             for (int j = fraKolonne; j <= tilKolonne; j++) {
-                pladser.add(new Plads(i, j, pris, pladsType));
+                pladser.add(Controller.createPlads(i, j, pris, pladsType));
             }
         }
+    }
+
+    public static void testPrint() {
+        System.out.println(Storage.getPladser());
+        System.out.println(Storage.getKunder());
+        System.out.println(Storage.getForestillinger());
     }
 }
 

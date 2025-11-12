@@ -36,4 +36,9 @@ public class Forestilling {
         bestillinger.add(bestilling);
         return bestilling;
     }
+
+    @Override
+    public String toString() {
+        return navn + " (fra " + startDato + " til " + slutDato + ")";
+    }
 }
